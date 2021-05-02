@@ -7,12 +7,10 @@ module.exports = (capability) => {
         next();
       } else {
         res.status(403).send('Access Denied');
-        // next('Access Denied');
       }
     } catch (error) {
       console.log(error);
       next('Invalid Login');
     }
   };
-}
-;
+};

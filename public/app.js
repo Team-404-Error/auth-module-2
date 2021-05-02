@@ -1,5 +1,6 @@
 'use strict';
 
+// ajax call to signin route
 $('#signinForm').on('submit', function(e) {
   e.preventDefault();
   let username = $('input#username').val();
@@ -18,6 +19,7 @@ $('#signinForm').on('submit', function(e) {
   });
 });
 
+// ajax call to secret area
 $('#admin').on('submit', function(e) {
   e.preventDefault();
   $.ajax({
@@ -34,4 +36,3 @@ $('#admin').on('submit', function(e) {
     }
   });
 });
-
