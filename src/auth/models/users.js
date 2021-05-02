@@ -37,8 +37,9 @@ users.pre('save', async function () {
 
 // =============== BASIC AUTHENTICATION ===============
 users.statics.authenticateBasic = async function (username, password) {
-  const user = await this.findOne({ username })
   if(!username) throw new Error('Invalid User')
+  const user = await this.findOne({ username })
+  if(!user) throw new Error('user not found')
   const valid = await bcrypt.compare(password, user.password)
   if (valid) { return user; }
   throw new Error('Invalid User');

@@ -2,7 +2,6 @@
 
 // =============== 3RD PARTY DEPENDENCIES ===============
 const express = require('express');
-// const session = require('express-session');
 const morgan = require('morgan');
 const cors = require('cors');
 const routes = require('./routes/routes');
@@ -19,11 +18,6 @@ app.use(morgan('dev'));
 app.use(upload.array());
 app.use(express.urlencoded({extended: true}));
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(session({
-//   secret:'Keep it secret',
-//   name:'uniqueSessionID',
-//   saveUninitialized:false
-// }));
 
 // =============== ROUTES ===============
 

@@ -26,13 +26,10 @@ routes.post('/signup', async (req, res, next) => {
   try {
     let user = new Users(req.body);
     const userRecord = await user.save();
-    // REMOVE AFTER TESTING
     const output = {
       user: userRecord,
       token: userRecord.token
     };
-    // CHANGE 'OUTPUT' AFTER TESTING
-    // PROBABLY CHANGE TO A REDIRECT
     res.status(201).json(output)
   } catch(error) {
     next(error.message)
@@ -41,13 +38,10 @@ routes.post('/signup', async (req, res, next) => {
 
 // --------------- SIGNIN ROUTE ---------------
 routes.post('/signin', basic, (req, res, next) => {
-  // REMOVE AFTER TESTING
   const user = {
     user: req.user,
     token: req.user.token
   };
-  // CHANGE 'OUTPUT' AFTER TESTING
-  // PROBABLY CHANGE TO A REDIRECT
   res.status(200).json(user)
 });
 
@@ -70,7 +64,6 @@ routes.get('/secret', async (req, res, next) => {
 
 // --------------- DELETE ROUTE ---------------
 routes.delete('/delete', bearer, async (req, res, next) => {
-  console.log(req.user._id);
   const deletedUser = await Users.findByIdAndDelete(req.user._id)
   res.status(200).send(deletedUser)
 });
